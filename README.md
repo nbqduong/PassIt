@@ -1,4 +1,4 @@
-# PassIT
+# PassIt
 
 
 **This is a small puzzle game**.
@@ -25,8 +25,8 @@
 │   ├── ...
 ├── src
 │   ├── CMakesLists.txt
-│   ├── foo/...
-│   └── bar/...
+│   ├── /...
+│   └── /...
 └── tests
     ├── CMakeLists.txt
     └── test_*.cc

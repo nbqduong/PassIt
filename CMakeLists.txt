@@ -2,13 +2,13 @@ cmake_minimum_required(VERSION 3.22)
 #-------------------DEFINE ZONE----------------------#
 ##INFORMATION AND CONFIGURATION
 project(
-        "Template"
+        "PassIt"
         VERSION 1.0.0
         LANGUAGES C CXX)
 
 # Project/Library Names
 set(EXECUTABLE_NAME "main")
-set(LIBRARIES "LibFoo" "LibBar")
+set(LIBRARIES "CommandAndLogic" ${SDL2_LIBRARIES} ${SDL2_IMAGE_LIBRARIES})
 
 
 # Global CMake variables are set here
@@ -16,7 +16,12 @@ set(CMAKE_CXX_STANDARD 20)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_CXX_EXTENSIONS OFF)
 set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
+set(SDL2_IMAGE_LIBRARIES "/usr/local/lib/libSDL2_image.so")
 #----------------------------------------------------#
+# package
+find_package(SDL2 REQUIRED)
+find_package(SDL2_image REQUIRED)
+
 
 option(USE_CPM "Whether to use CPM." ON)
 
@@ -28,9 +33,9 @@ option(ENABLE_COVERAGE "Enable a Code Coverage build." OFF)
 
 option(ENABLE_CLANG_TIDY "Enable to add clang tidy." ON)
 
-option(ENABLE_SANITIZE_ADDR "Enable address sanitize." OFF)
-option(ENABLE_SANITIZE_UNDEF "Enable undefined sanitize." OFF)
-option(ENABLE_SANITIZE_LEAK "Enable leak sanitize (Gcc/Clang only)." OFF)
+option(ENABLE_SANITIZE_ADDR "Enable address sanitize." ON)
+option(ENABLE_SANITIZE_UNDEF "Enable undefined sanitize." ON)
+option(ENABLE_SANITIZE_LEAK "Enable leak sanitize (Gcc/Clang only)." ON)
 option(ENABLE_SANITIZE_THREAD "Enable thread sanitize (Gcc/Clang only)." OFF)
 
 option(ENABLE_CLANG_FORMAT "Enable to add clang-format." OFF)
@@ -76,12 +81,7 @@ endif()
 if(USE_CPM)
     message(STATUS "Using CPM")
     include(CPM)
-#    cpmaddpackage("gh:nlohmann/json#v3.11.3")
-#    cpmaddpackage("gh:fmtlib/fmt#9.1.0")
-#    cpmaddpackage("gh:gabime/spdlog#v1.13.0")
-#    cpmaddpackage("gh:jarro2783/cxxopts#v3.1.1")
-#    cpmaddpackage("gh:gabime/spdlog#v1.14.1")
-
+    cpmaddpackage("gh:libsdl-org/SDL_ttf#release-2.22.0")
     if(ENABLE_TESTING)
         cpmaddpackage("gh:catchorg/Catch2#v3.5.3")
         list(APPEND CMAKE_MODULE_PATH ${Catch2_SOURCE_DIR}/extras)

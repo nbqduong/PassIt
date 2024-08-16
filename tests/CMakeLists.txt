@@ -1,3 +1,23 @@
+##-------------------DEFINE ZONE----------------------#
+##this
+#set(TEST_EXECUTABLES "Utilities")
+#set(LIBRARY_INCLUDES "./" "${CMAKE_BINARY_DIR}/configured_files/include")
+#
+#set(LIBRARY_SOURCES
+#        "${CMAKE_CURRENT_SOURCE_DIR}/Setting.cpp"
+#        #        "${CMAKE_CURRENT_SOURCE_DIR}/Engine.cpp"
+#)
+#set(LIBRARY_HEADERS
+#        "${CMAKE_CURRENT_SOURCE_DIR}/Setting.h"
+#        "${CMAKE_CURRENT_SOURCE_DIR}/Exception.h"
+#        #        "${CMAKE_CURRENT_SOURCE_DIR}/Engine.h"
+#)
+#
+##include more
+#set(LIBRARIES_TO_LINK ${SDL2_LIBRARIES})
+##----------------------------------------------------#
+
+
 include(Catch)
 
 add_executable("UnitTestFoo" "test_foo.cc")

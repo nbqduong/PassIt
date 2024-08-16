@@ -11,12 +11,6 @@ git clone https://github.com/Microsoft/vcpkg.git
 ./vcpkg/bootstrap-vcpkg.sh # Unix
 ```
 
-## How to install the Conan Package Manager
-
-Official installation guide is [here](https://docs.conan.io/2/).
-
-The conan database is [here](https://conan.io/center/).
-
 ### Installation Steps
 
 1. Install Python (3.7+)

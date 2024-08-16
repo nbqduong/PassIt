@@ -1,7 +1,12 @@
 #-------------------DEFINE ZONE----------------------#
+set(EXECUTABLE_NAME main)
 set(APP_SOURCES "${CMAKE_CURRENT_SOURCE_DIR}/main.cc")
-set(LIBRARIES LibFoo)
+set(LIBRARIES CommandAndLogic )
 #----------------------------------------------------#
+# package
+find_package(SDL2 REQUIRED)
+find_package(SDL2_image REQUIRED)
+
 
 add_executable(${EXECUTABLE_NAME} ${APP_SOURCES})
 

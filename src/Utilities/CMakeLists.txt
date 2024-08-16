@@ -1,15 +1,20 @@
 #-------------------DEFINE ZONE----------------------#
 #this library
-set(LIBRARY_NAME "LibFoo")
+set(LIBRARY_NAME "Utilities")
 set(LIBRARY_INCLUDES "./" "${CMAKE_BINARY_DIR}/configured_files/include")
 
 set(LIBRARY_SOURCES
-        "${CMAKE_CURRENT_SOURCE_DIR}/foo.cc")
+        "${CMAKE_CURRENT_SOURCE_DIR}/Setting.cpp"
+#        "${CMAKE_CURRENT_SOURCE_DIR}/Engine.cpp"
+)
 set(LIBRARY_HEADERS
-        "${CMAKE_CURRENT_SOURCE_DIR}/foo.h")
+        "${CMAKE_CURRENT_SOURCE_DIR}/Setting.h"
+        "${CMAKE_CURRENT_SOURCE_DIR}/Exception.h"
+        #        "${CMAKE_CURRENT_SOURCE_DIR}/Engine.h"
+)
 
 #include more
-set(LIBRARIES_TO_LINK )
+set(LIBRARIES_TO_LINK ${SDL2_LIBRARIES})
 #----------------------------------------------------#
 
 add_library(${LIBRARY_NAME} STATIC ${LIBRARY_SOURCES} ${LIBRARY_HEADERS})

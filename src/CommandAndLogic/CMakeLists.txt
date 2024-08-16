@@ -1,15 +1,19 @@
 #-------------------DEFINE ZONE----------------------#
 #this library
-set(LIBRARY_NAME "LibBar")
+set(LIBRARY_NAME "CommandAndLogic")
 set(LIBRARY_INCLUDES "./" "${CMAKE_BINARY_DIR}/configured_files/include")
 
 set(LIBRARY_SOURCES
-        "${CMAKE_CURRENT_SOURCE_DIR}/bar.cc")
+        "${CMAKE_CURRENT_SOURCE_DIR}/Input.cpp"
+        "${CMAKE_CURRENT_SOURCE_DIR}/Engine.cpp"
+       )
 set(LIBRARY_HEADERS
-        "${CMAKE_CURRENT_SOURCE_DIR}/bar.h")
+        "${CMAKE_CURRENT_SOURCE_DIR}/Input.h"
+        "${CMAKE_CURRENT_SOURCE_DIR}/Engine.h"
+        )
 
 #include more
-set(LIBRARIES_TO_LINK )
+set(LIBRARIES_TO_LINK "Display" SDL2_ttf ${SDL2_LIBRARIES} ${SDL2_IMAGE_LIBRARIES})
 #----------------------------------------------------#
 
 add_library(${LIBRARY_NAME} STATIC ${LIBRARY_SOURCES} ${LIBRARY_HEADERS})
