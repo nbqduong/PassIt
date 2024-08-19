@@ -5,14 +5,18 @@
 #ifndef WINDOWS_H
 #define WINDOWS_H
 #include "SDL2/SDL_image.h"
-#include "Text.h"
+
 #include "TextureFactory.h"
+#include "TextureManager.h"
 #include <Exception.h>
 #include <SDL2/SDL.h>
 #include <iostream>
 #include <memory>
 #include <mutex>
 #include <vector>
+
+using std::vector;
+using std::shared_ptr;
 
 class Windows {
 protected:
@@ -21,23 +25,15 @@ protected:
     std::string mName;
     SDL_Window* mWindow;
     SDL_Renderer* mRenderer;
-    Text mText{24};
-    TextureFactory mTexture;
+    std::unique_ptr<TextureManager> mTexture{nullptr};
 
 public:
     Windows(std::string_view windows_name, uint16_t size_PX, uint16_t size_PY, uint16_t pos_PX=0, uint16_t pos_PY=0);
-    virtual void Render();
-    inline SDL_Renderer* getRenderer(){return mRenderer;}
+    Windows() = delete;
     ~Windows();
+    virtual void Render();
+    void SetText(vector<shared_ptr<TextObject>> texts);
+    string_view GetName(){return mName;}
 };
-
-class SettingWindow: public Windows{
-public:
-    SettingWindow(): Windows(std::string(project_name)+" Setting", 800,600, 600,200){}
-    void Render() override;
-
-};
-
-
 
 #endif //WINDOWS_H

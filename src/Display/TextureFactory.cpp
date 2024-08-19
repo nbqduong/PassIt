@@ -17,6 +17,14 @@ TextureFactory::TextureFactory(uint16_t  text_size ,std::string font_path )
 }
 
 bool TextureFactory::Load(std::string id, std::string filename){
+
+    //if id existed, destroy it first
+    auto it_texture = mTextureMap.find(id);
+    if (it_texture != mTextureMap.end())
+    {
+        Drop(id);
+    }
+
     SDL_Surface* surface = IMG_Load(filename.c_str());
     if(surface == nullptr){
         SDL_Log("Failed to load texture: %s, %s", filename.c_str(), SDL_GetError());
@@ -77,6 +85,14 @@ TextureFactory::~TextureFactory(){
 bool TextureFactory::addText(std::string id, std::string textureText, SDL_Color textColor)
 {
     std::string text_id = "text_"+id;
+
+    //if id existed, destroy it first
+    auto it_texture = mTextureMap.find(text_id);
+    if (it_texture != mTextureMap.end())
+    {
+        Drop(text_id);
+    }
+
     SDL_Texture* mTexture  = nullptr;
         //Render text surface
     SDL_Surface* textSurface = TTF_RenderText_Solid( gFont, textureText.c_str(), textColor );

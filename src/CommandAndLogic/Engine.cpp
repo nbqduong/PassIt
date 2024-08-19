@@ -3,8 +3,12 @@
 //
 
 #include "Engine.h"
+#include "CommandDispatcher.h"
+#include "Frame.h"
+#include "Input.h"
 #include "Setting.h"
-#include "Text.h"
+#include "SettingFactory.h"
+#include "SettingObject.h"
 #include "TextureFactory.h"
 #include "config.hpp"
 #include <SDL_ttf.h>
@@ -21,35 +25,35 @@ Engine::Engine()
     {
         throw Exception{"SDL could not initialize! SDL_Error: %s\n"+ std::string(SDL_GetError())};
     }
-
-     mWindow= std::make_unique<SettingWindow>();
-
-
 }
 
 void Engine::Start() {
 
+//    CreateSettingWindow();
+//
 //    auto objects{ObjectFactory::GetInstance()->GetObject()};
 //    auto m = SDL_GetKeyboardState(nullptr);
-//    auto input = KeyBoard::GetInstance();
+    auto input = KeyBoard::GetInstance();
 //    auto move = MovementManager::GetInstance();
-//    auto frame = Frame::GetInstance();
+    auto frame = Frame::GetInstance();
 
+    CommandDispatcher command;
+
+
+
+//    mWindow->Render();
+//    SDL_Delay(3000);
+//    mWindow= std::make_unique<Windows>(project_name, MainWindowSetting::GetScreenPX(), MainWindowSetting::GetScreenPY());
     /*-------------------------THE GAME LOOP---------------------------------*/
-//    while (true)
+    while (true)
     {
 
-
-
-//        TextureFactory::GetInstance().Load("tree",std::string(_materials)+"/tree.png");
-    mWindow->Render();
-//        auto event = input->GetEvent();
-//        if(event == UserEvent::emQuit) {
-//            return;
-//        }
-//        move->Move(event);
-//        frame->Delay();
-        SDL_Delay(5000);
+        auto event = input.GetEvent();
+        if(event == UserEvent::emQuit) {
+            return;
+        }
+        command.Dispatch(event);
+        frame->Delay();
     }
 
 
@@ -64,4 +68,10 @@ Engine::~Engine() {
     SDL_Quit();
 
     TTF_Quit();
+}
+
+void Engine::CreateSettingWindow()
+{
+    mWindow= std::make_unique<Windows>(std::string(project_name)+" Setting", 800,600, 600,200);
+
 }

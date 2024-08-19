@@ -1,3 +1,4 @@
 add_subdirectory(CommandAndLogic)
 add_subdirectory(Display)
 add_subdirectory(Utilities)
+add_subdirectory(Object)

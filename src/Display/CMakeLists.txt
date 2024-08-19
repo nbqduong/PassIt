@@ -7,13 +7,11 @@ set(LIBRARY_SOURCES
         "${CMAKE_CURRENT_SOURCE_DIR}/Window.cpp"
         "${CMAKE_CURRENT_SOURCE_DIR}/TextureFactory.cpp"
         "${CMAKE_CURRENT_SOURCE_DIR}/TextureManager.cpp"
-        "${CMAKE_CURRENT_SOURCE_DIR}/Text.cpp"
 )
 set(LIBRARY_HEADERS
         "${CMAKE_CURRENT_SOURCE_DIR}/Window.h"
         "${CMAKE_CURRENT_SOURCE_DIR}/TextureFactory.h"
         "${CMAKE_CURRENT_SOURCE_DIR}/TextureManager.h"
-        "${CMAKE_CURRENT_SOURCE_DIR}/Text.h"
 )
 
 #include more

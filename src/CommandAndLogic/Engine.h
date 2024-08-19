@@ -13,6 +13,7 @@ class Engine
 {
     std::unique_ptr<Windows> mWindow{nullptr};
     Engine();
+    void CreateSettingWindow();
 
 public:
     void Start();

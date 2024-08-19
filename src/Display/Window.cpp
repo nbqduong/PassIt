@@ -3,7 +3,6 @@
 //
 
 #include "Window.h"
-#include "Text.h"
 #include "TextureFactory.h"
 Windows::Windows(std::string_view windows_name, uint16_t size_PX, uint16_t size_PY,uint16_t pos_PX, uint16_t pos_PY)
     : mName{windows_name},mWidth{size_PX}, mHeight{size_PY}
@@ -22,8 +21,7 @@ Windows::Windows(std::string_view windows_name, uint16_t size_PX, uint16_t size_
         throw Exception{"Could not get window renderer!" + std::string(SDL_GetError())};
     }
 
-    mTexture.setRenderer(mRenderer);
-    mText.setRenderer(mRenderer);
+    mTexture = std::make_unique<TextureManager>(mRenderer);
 }
 
 Windows::~Windows() {
@@ -39,38 +37,21 @@ Windows::~Windows() {
 
 void Windows::Render() {
     //Render text
-    if( !mTexture.addText( "test","The quick brown fox jumps over the lazy dog", { 0, 0, 0 } ) )
-    {
-        printf( "Failed to render text texture!\n" );
-    }
 
     SDL_SetRenderDrawColor(mRenderer, 193, 224, 245,255);
     SDL_RenderClear(mRenderer);
 
 //    TextureManager::GetInstance()->Show();
-    mTexture.viewText("test",0,0);
+    mTexture->ShowText();
 
 //    TextureFactory::GetInstance().DrawFrame("tree", {0,0},{640,640},{100,100},{640,640});
     SDL_RenderPresent(mRenderer);
 }
 
-
-void SettingWindow::Render()
+void Windows::SetText(vector<shared_ptr<TextObject>> texts)
 {
-    //Render text
-    if( !mText.loadFromRenderedText( "The quick brown fox jumps over the lazy dog", { 0, 0, 0 } ) )
-    {
-        printf( "Failed to render text texture!\n" );
-    }
-
-    SDL_SetRenderDrawColor(mRenderer, 193, 224, 245,255);
-    SDL_RenderClear(mRenderer);
-
-    //    TextureManager::GetInstance()->Show();
-    mText.render(0,0);
-    mText.render(0,100);
-
-    //    TextureFactory::GetInstance().DrawFrame("tree", {0,0},{640,640},{100,100},{640,640});
-    SDL_RenderPresent(mRenderer);
+    mTexture->SetText(texts);
 }
+
+
 

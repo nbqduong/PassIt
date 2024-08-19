@@ -1,0 +1,54 @@
+//
+// Created by duong on 8/19/24.
+//
+
+#include "CommandDispatcher.h"
+
+
+void CommandDispatcher::Dispatch(UserEvent event)
+{
+
+    //Popup windows is windows display after game pause this have the highest priority
+    if(mPopUpWindow != nullptr)
+    {
+        //handle pause window: R to resume game, T to restart, SPACE to back to setting window
+        switch (event)
+        {
+        case UserEvent::emR:
+            mPopUpWindow = nullptr;
+            break;
+        case UserEvent::emSpace:
+            mPopUpWindow = nullptr;
+            mCurrentWindow = make_shared<SettingWindow>();
+            break;
+        default:
+            //not handle restart game yet
+
+            break;
+
+        }
+    }else
+    {
+        //handle general: SPACE: setting window switch to Game window, Game window display pause popup
+        if(event == UserEvent::emSpace)
+        {
+            //Main windows have project_name name
+            if(0 == mCurrentWindow->GetName().compare(string(project_name))){
+                mPopUpWindow = make_shared<PauseWindow>();
+            }else
+            {
+                //Get current setting from setting window and create suitable MainWindow option
+                mCurrentWindow = make_shared<MainWindow>();
+            }
+
+        }
+        else
+        {
+
+            //forward command to window process
+            mCurrentWindow->ExecuteCommand(event);
+
+
+        }
+    }
+}

@@ -4,23 +4,23 @@
 
 #include "Setting.h"
 
-uint16_t Setting::mScreenWidth{1600};
-uint16_t Setting::mScreenHeight{960};
-uint16_t Setting::mViewUnit{64};
-uint16_t Setting::mSourceUnit{64};
-uint16_t Setting::mFrame{64};
+uint16_t MainWindowSetting::mScreenWidth{1600};
+uint16_t MainWindowSetting::mScreenHeight{960};
+uint16_t MainWindowSetting::mViewUnit{64};
+uint16_t MainWindowSetting::mSourceUnit{64};
+uint16_t MainWindowSetting::mFrame{64};
 
 
-Setting::Setting()
+MainWindowSetting::MainWindowSetting()
 {}
 
-Setting Setting::Instance()
+MainWindowSetting& MainWindowSetting::Instance()
 {
-    static Setting mInstance;
+    static MainWindowSetting mInstance;
     return mInstance;
 }
 
-void Setting::Set(uint16_t screen_width, uint16_t screen_height, uint16_t view_unit, uint16_t source_unit, uint16_t frame)
+void MainWindowSetting::Set(uint16_t screen_width, uint16_t screen_height, uint16_t view_unit, uint16_t source_unit, uint16_t frame)
 {
     mScreenWidth = screen_width;
     mScreenHeight = screen_height;

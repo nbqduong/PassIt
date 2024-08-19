@@ -6,14 +6,22 @@ set(LIBRARY_INCLUDES "./" "${CMAKE_BINARY_DIR}/configured_files/include")
 set(LIBRARY_SOURCES
         "${CMAKE_CURRENT_SOURCE_DIR}/Input.cpp"
         "${CMAKE_CURRENT_SOURCE_DIR}/Engine.cpp"
-       )
+        "${CMAKE_CURRENT_SOURCE_DIR}/CommandDispatcher.cpp"
+        "${CMAKE_CURRENT_SOURCE_DIR}/AbstractManager.cpp"
+        "${CMAKE_CURRENT_SOURCE_DIR}/WindowManager.cpp"
+
+)
 set(LIBRARY_HEADERS
         "${CMAKE_CURRENT_SOURCE_DIR}/Input.h"
         "${CMAKE_CURRENT_SOURCE_DIR}/Engine.h"
-        )
+        "${CMAKE_CURRENT_SOURCE_DIR}/CommandDispatcher.h"
+        "${CMAKE_CURRENT_SOURCE_DIR}/AbstractManager.h"
+        "${CMAKE_CURRENT_SOURCE_DIR}/WindowManager.h"
+
+)
 
 #include more
-set(LIBRARIES_TO_LINK "Display" SDL2_ttf ${SDL2_LIBRARIES} ${SDL2_IMAGE_LIBRARIES})
+set(LIBRARIES_TO_LINK Display Object SDL2_ttf ${SDL2_LIBRARIES} ${SDL2_IMAGE_LIBRARIES})
 #----------------------------------------------------#
 
 add_library(${LIBRARY_NAME} STATIC ${LIBRARY_SOURCES} ${LIBRARY_HEADERS})
