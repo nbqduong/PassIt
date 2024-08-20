@@ -15,6 +15,7 @@ public:
 
     //Handle commands
     void HandleCommand(const UserEvent &event);
+    const vector<OptionInfo> & GetSetting(){return mOptions;}
     ~SettingObject();
 };
 

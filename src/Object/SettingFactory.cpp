@@ -18,6 +18,8 @@ const vector<shared_ptr<TextObject>>&SettingFactory::CreateSettings()
         mTexts.insert(mTexts.end(),tmp_opt.begin(), tmp_opt.end());
     }
     mMaxSetting = static_cast<int>(mOptions.size());
+    //Change visual of curren setting
+    mTexts.at((mCurrentSetting+1)*2)->Resize(30);
     return mTexts;
 }
 
@@ -43,14 +45,20 @@ void SettingFactory::SwitchOption(const UserEvent &direction)
 
 void SettingFactory::SwitchSetting(const UserEvent &direction)
 {
+    //old setting change to normal size
+    mTexts.at((mCurrentSetting+1)*2)->Resize(20);
+
     if(direction == UserEvent::emUp)
     {
+        //mCurrenSetting point to current setting
         mCurrentSetting =  --mCurrentSetting >= 0 ? mCurrentSetting : mMaxSetting-1;
     }
     else
     {
         mCurrentSetting =  ++mCurrentSetting < mMaxSetting ? mCurrentSetting : 0;
     }
+    //Change visual of curren setting
+    mTexts.at((mCurrentSetting+1)*2)->Resize(30);
 }
 
 int SettingFactory::DirectionConverter(const UserEvent &direction)

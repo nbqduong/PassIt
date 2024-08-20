@@ -4,12 +4,17 @@
 
 #include "Setting.h"
 
+
 uint16_t MainWindowSetting::mScreenWidth{1600};
 uint16_t MainWindowSetting::mScreenHeight{960};
 uint16_t MainWindowSetting::mViewUnit{64};
 uint16_t MainWindowSetting::mSourceUnit{64};
 uint16_t MainWindowSetting::mFrame{64};
-
+vector<OptionInfo> MainWindowSetting::mOptions{
+    {"Hero", {"Basic","Simple"}},
+    {"Map",{"Ice","Forest"}},
+    {"WindowSize",{"Medium","Large", "FullScreen"}},
+};
 
 MainWindowSetting::MainWindowSetting()
 {}
@@ -27,4 +32,16 @@ void MainWindowSetting::Set(uint16_t screen_width, uint16_t screen_height, uint1
     mViewUnit = view_unit;
     mSourceUnit = source_unit;
     mFrame = frame;
+}
+
+Co Convert::WindowSize(std::string_view size)
+{
+    if(size.compare("Medium") == 0)
+    {
+        return MEDIUM_WINDOW;
+    }
+    else
+    {
+        return LARGE_WINDOW;
+    }
 }

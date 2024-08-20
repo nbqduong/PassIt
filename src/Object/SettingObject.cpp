@@ -10,9 +10,7 @@
 
 SettingObject::SettingObject(): SettingFactory("Setting")
 {
-    RegisterOption("Hero",{"Basic","Simple"});
-    RegisterOption("Map",{"Ice","Forest"});
-    RegisterOption("WindowSize",{"Small","Medium","Large", "FullScreen"});
+    mOptions = MainWindowSetting::GetOptions();
     CreateSettings();
 
 }

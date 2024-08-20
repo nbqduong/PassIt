@@ -18,6 +18,8 @@ class CommandDispatcher
 {
     std::shared_ptr<WindowManager> mCurrentWindow{make_shared<SettingWindow>()},
         mPopUpWindow{nullptr};
+    vector<OptionInfo> mSetting;
+
 public:
     //Dispatch even
     void Dispatch(UserEvent event);
