@@ -12,13 +12,19 @@
 #include "config.hpp"
 #include <any>
 using std::any;
-
-class WindowManager:  public Windows
+using std::string;
+using std::make_shared;
+class WindowManager
 {
+
+protected:
+    std::shared_ptr<Windows> mWindow;
 public:
+    WindowManager(){};
     WindowManager(std::string_view windows_name, uint16_t size_PX, uint16_t size_PY, uint16_t pos_PX=0, uint16_t pos_PY=0);
     virtual void ExecuteCommand(UserEvent event) = 0;
     virtual any GetInformation(){};
+    string GetName(){return string(mWindow->GetName());}
 };
 
 class SettingWindow : public WindowManager
@@ -33,7 +39,7 @@ public:
 class MainWindow : public WindowManager
 {
 public:
-    MainWindow();
+    MainWindow(vector<OptionInfo> info);
     void ExecuteCommand(UserEvent event){};
 };
 

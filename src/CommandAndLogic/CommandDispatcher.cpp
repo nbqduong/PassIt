@@ -43,9 +43,8 @@ void CommandDispatcher::Dispatch(UserEvent event)
                 } catch (const std::bad_any_cast& e) {
                     std::cerr << "Bad cast: " << e.what() << std::endl;
                 }
-                auto main_size = Convert::WindowSize(mSetting.at(2).Get());
-                MainWindowSetting::Instance().Set(main_size.X, main_size.Y);
-                mCurrentWindow = make_shared<MainWindow>();
+
+                mCurrentWindow = make_shared<MainWindow>(mSetting);
             }
         }
         else
