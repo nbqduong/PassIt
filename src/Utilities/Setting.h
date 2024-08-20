@@ -13,6 +13,8 @@
 /*-----------------GENERAL DEFINE-------------------------------*/
 #define MEDIUM_WINDOW   {960,540}
 #define LARGE_WINDOW    {1920,1080}
+#define MAX_X           30
+#define MAX_Y           16
 
 using std::string;
 using std::vector;
@@ -84,14 +86,13 @@ class MainWindowSetting
     MainWindowSetting();
 public:
     static MainWindowSetting& Instance();
-    static uint16_t GetSourceonView(){return mSourceUnit/mViewUnit;};
-    static uint8_t MaxX(){return uint8_t(mScreenWidth/mViewUnit);};
-    static uint8_t MaxY(){return uint8_t(mScreenHeight/mViewUnit);};
+    static uint16_t GetSourceonView(){return mSourceUnit/mViewUnit;}
     static uint16_t GetScreenPX(){return mScreenWidth;}
     static uint16_t GetScreenPY(){return mScreenHeight;}
-    void Set(uint16_t screen_width, uint16_t screen_height, uint16_t view_unit = 64, uint16_t source_unit = 64, uint16_t frame = 64 );
+    void Set(uint16_t screen_width, uint16_t screen_height, uint16_t source_unit = 64, uint16_t frame = 64 );
     static std::string GetFontPath(){return std::string(_materials)+"Myfont.ttf";}
     static uint16_t GetViewUnit(){return mViewUnit;}
+    static uint16_t GetSourceUnit(){return mSourceUnit;}
     static uint16_t GetFrame(){return mFrame;}
     static vector<OptionInfo> GetOptions(){return mOptions;}
 };
@@ -101,7 +102,9 @@ class Convert
 public:
     static uint16_t toPx(uint16_t P){return P*MainWindowSetting::Instance().GetViewUnit();}
     static Co toPx(uint16_t X, uint16_t Y){return {static_cast<uint16_t >(X*MainWindowSetting::Instance().GetViewUnit()),static_cast<uint16_t >(Y*MainWindowSetting::Instance().GetViewUnit())};}
+    static Co toPx(Co c){return {static_cast<uint16_t >(c.X*MainWindowSetting::Instance().GetViewUnit()),static_cast<uint16_t >(c.Y*MainWindowSetting::Instance().GetViewUnit())};}
     static Co WindowSize(string_view size);
+    static const string Asset(const string file){return (std::string(_materials)+file+".png");}
 };
 
 

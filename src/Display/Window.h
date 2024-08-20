@@ -33,6 +33,7 @@ public:
     ~Windows();
     virtual void Render();
     void SetText(vector<shared_ptr<TextObject>> texts);
+    void SetObject(vector<shared_ptr<Object>> object);
     string_view GetName(){return mName;}
 };
 

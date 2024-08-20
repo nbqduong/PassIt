@@ -3,6 +3,7 @@
 //
 
 #include "WindowManager.h"
+#include "ObjectFactory.h"
 
 WindowManager::WindowManager(std::string_view windows_name, uint16_t size_PX, uint16_t size_PY, uint16_t pos_PX, uint16_t pos_PY)
 
@@ -42,7 +43,9 @@ MainWindow::MainWindow(vector<OptionInfo> info)
     mWindow = make_shared<Windows>(std::string(project_name), MainWindowSetting::GetScreenPX(), MainWindowSetting::GetScreenPY());
 
     //Create game objects
-
+    ObjectFactory f;
+    auto a = f.GetObject();
+    mWindow->SetObject(a);
 
     mWindow->Render();
 }

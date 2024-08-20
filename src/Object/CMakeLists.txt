@@ -7,11 +7,16 @@ set(LIBRARY_SOURCES
         "${CMAKE_CURRENT_SOURCE_DIR}/TextFactory.cpp"
         "${CMAKE_CURRENT_SOURCE_DIR}/SettingFactory.cpp"
         "${CMAKE_CURRENT_SOURCE_DIR}/SettingObject.cpp"
+        "${CMAKE_CURRENT_SOURCE_DIR}/ObjectFactory.cpp"
+        "${CMAKE_CURRENT_SOURCE_DIR}/Deco.cpp"
+
 )
 set(LIBRARY_HEADERS
         "${CMAKE_CURRENT_SOURCE_DIR}/TextFactory.h"
         "${CMAKE_CURRENT_SOURCE_DIR}/SettingFactory.h"
         "${CMAKE_CURRENT_SOURCE_DIR}/SettingObject.h"
+        "${CMAKE_CURRENT_SOURCE_DIR}/ObjectFactory.h"
+        "${CMAKE_CURRENT_SOURCE_DIR}/Deco.h"
 
 )
 

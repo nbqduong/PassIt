@@ -31,7 +31,11 @@ public:
     void Clean();
 
 //    void Draw(std::string id, int x, int y, int width, int heigt, SDL_RendererFlip flip=SDL_FLIP_NONE);
-    void DrawFrame  ( std::string id, Co src_pos, Co src_range, Co dst_pos, Co dst_range, SDL_RendererFlip flip=SDL_FLIP_NONE) const;
+    void DrawFrame  ( std::string id, Co dst_pos,
+                   Co src_pos = {0,0},
+                   Co src_range = {MainWindowSetting::GetSourceUnit(), MainWindowSetting::GetSourceUnit()},
+                   Co dst_range={MainWindowSetting::GetViewUnit(), MainWindowSetting::GetViewUnit()},
+                   SDL_RendererFlip flip=SDL_FLIP_NONE) const;
     void setRenderer(SDL_Renderer* renderer);
 
 

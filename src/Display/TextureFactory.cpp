@@ -55,7 +55,7 @@ void TextureFactory::Clean(){
     SDL_Log("Texture map cleaned!");
 }
 
-void TextureFactory::DrawFrame(std::string id, Co src_pos, Co src_range, Co dst_pos, Co dst_range, SDL_RendererFlip flip) const
+void TextureFactory::DrawFrame(std::string id, Co dst_pos, Co src_pos, Co src_range, Co dst_range, SDL_RendererFlip flip) const
 {
     SDL_Rect srcRect = {src_pos.X, src_pos.Y, src_range.X, src_range.Y};
     SDL_Rect dstRect = {dst_pos.X, dst_pos.Y, dst_range.X, dst_range.Y};

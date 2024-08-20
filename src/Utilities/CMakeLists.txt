@@ -14,6 +14,8 @@ set(LIBRARY_HEADERS
         "${CMAKE_CURRENT_SOURCE_DIR}/Frame.h"
         "${CMAKE_CURRENT_SOURCE_DIR}/ObserverPattern.h"
         "${CMAKE_CURRENT_SOURCE_DIR}/Object.h"
+        "${CMAKE_CURRENT_SOURCE_DIR}/Map.h"
+
 )
 
 #include more

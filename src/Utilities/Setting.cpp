@@ -25,11 +25,11 @@ MainWindowSetting& MainWindowSetting::Instance()
     return mInstance;
 }
 
-void MainWindowSetting::Set(uint16_t screen_width, uint16_t screen_height, uint16_t view_unit, uint16_t source_unit, uint16_t frame)
+void MainWindowSetting::Set(uint16_t screen_width, uint16_t screen_height, uint16_t source_unit, uint16_t frame)
 {
     mScreenWidth = screen_width;
     mScreenHeight = screen_height;
-    mViewUnit = view_unit;
+    mViewUnit = mScreenWidth/MAX_X;
     mSourceUnit = source_unit;
     mFrame = frame;
 }
