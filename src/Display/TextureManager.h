@@ -17,13 +17,14 @@ class TextureManager
     SDL_Renderer* mRenderer;
     TextureFactory mFactory;
     std::vector<std::shared_ptr<TextObject>> mTexts;
-    std::vector<std::shared_ptr<Object>> mObjects;
+    const std::vector<std::shared_ptr<Object>> *mObjects{nullptr};
 public:
     TextureManager(SDL_Renderer* mRenderer);
     TextureManager()=delete;
     void ShowText();
     void SetText(std::vector<std::shared_ptr<TextObject>> texts);
-    void SetObject(const std::vector<std::shared_ptr<Object>>&object) ;
+    void SetObject(const std::vector<std::shared_ptr<Object>>*object) ;
+    void RegisterObject();
     ~TextureManager()=default;
 };
 

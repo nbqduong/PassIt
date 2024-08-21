@@ -32,7 +32,7 @@ public:
         mInfo.mView= view_pos;
     }
 
-    const ObjInfo * GetInfo() const {return &mInfo;}
+    ObjInfo& GetInfo() {return mInfo;}
     void Resize(uint32_t width, uint32_t height);
     virtual TouchEvent Touched(){};
     virtual ~Object()=default;

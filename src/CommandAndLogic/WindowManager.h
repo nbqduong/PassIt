@@ -7,6 +7,8 @@
 
 
 #include "Input.h"
+#include "MovementManager.h"
+#include "ObjectFactory.h"
 #include "SettingObject.h"
 #include "Window.h"
 #include "config.hpp"
@@ -14,6 +16,8 @@
 using std::any;
 using std::string;
 using std::make_shared;
+using std::unique_ptr;
+using std::make_unique;
 class WindowManager
 {
 
@@ -38,9 +42,12 @@ public:
 
 class MainWindow : public WindowManager
 {
+    shared_ptr<ObjectFactory> mObjects;
+    unique_ptr<MovementManager> mMove;
+
 public:
     MainWindow(vector<OptionInfo> info);
-    void ExecuteCommand(UserEvent event){};
+    void ExecuteCommand(UserEvent event);
 };
 
 class PauseWindow : public WindowManager

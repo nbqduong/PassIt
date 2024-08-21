@@ -48,7 +48,7 @@ public:
     static uint8_t GetWidth(){return MAX_X;}
     static uint8_t GetHeight(){return MAX_Y;}
     uint8_t GetObject(uint8_t row, uint8_t collum){return mStructure[row][collum];}
-    uint16_t GetVectorIndex(uint8_t row, uint8_t collum){return row*MAX_Y+collum;}
+    uint16_t GetVectorIndex(uint8_t row, uint8_t collum){return row*MAX_X+collum;}
     uint16_t GetSize(){return MAX_X*MAX_Y;};
 
 private:

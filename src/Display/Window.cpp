@@ -53,9 +53,13 @@ void Windows::SetText(vector<shared_ptr<TextObject>> texts)
     mTexture->SetText(texts);
 }
 
-void Windows::SetObject(vector<shared_ptr<Object>> object)
+void Windows::SetObject(const vector<shared_ptr<Object>> *object)
 {
     mTexture->SetObject(object);
 }
 
+void Windows::RegisterObject()
+{
+    mTexture->RegisterObject();
+}
 

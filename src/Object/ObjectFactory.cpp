@@ -3,6 +3,8 @@
 //
 
 #include "ObjectFactory.h"
+#include "DynamicObject.h"
+#include "Position.h"
 ObjectFactory::ObjectFactory() {
     mObjects.resize(mMapPtr.GetSize()+1,nullptr);
 
@@ -17,7 +19,7 @@ ObjectFactory::ObjectFactory() {
                 mObjects[index]=(std::make_shared<Bush>(column, row));
                 break;
             case 3:
-//                mObjects[index]=(std::make_shared<Rock>(column, row));
+                mObjects[index]=(std::make_shared<Rock>(column, row));
                 break;
             case 4:
                 mObjects[index]=(std::make_shared<Chest>(column, row));
@@ -33,26 +35,21 @@ ObjectFactory::ObjectFactory() {
 
         }
     }
-//    mObjects.push_back(mHero);
-    //    for(int  i = 48 ; i < mObjects.size(); i+=50)
-    //    {
-    //        std::cout << "index " << i << " "<< mObjects[i]->GetInfo()->mDrawID << std::endl;
-    //    }
-    std::cout ;
+    mObjects.push_back(mHero);
 }
 //Move dinamic object from pos following dir and return moved object
-//std::shared_ptr<Object> ObjectFactory::Move(XYWH Pos, Direction dir) {
-//    auto _object = GetObject(Pos);
-//    auto moved_object = std::dynamic_pointer_cast<DynamicObject>(_object);
-//    if(moved_object != nullptr)
-//    {
-//        auto next_pos = Collision::Check(dir, Pos);
-//        mObjects[Pos2Index(next_pos)] = _object;
-//        moved_object->Move(dir);
-//        Erase(Pos);
-//    }
-//    return moved_object;
-//}
+std::shared_ptr<Object> ObjectFactory::Move(Co Pos, UserEvent dir){
+    auto _object = GetObject(Pos);
+    auto moved_object = std::dynamic_pointer_cast<DynamicObject>(_object);
+    if(moved_object != nullptr)
+    {
+        auto next_pos = Position::Check(dir, Pos);
+        mObjects[Pos2Index(next_pos)] = _object;
+        moved_object->Move(dir);
+        Erase(Pos);
+    }
+    return moved_object;
+}
 
 uint16_t ObjectFactory::CalculateIndex(const uint8_t &row, const uint8_t &collum)
 {

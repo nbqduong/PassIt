@@ -6,26 +6,32 @@
 #define TEMPLATE_OBJECTFACTORY_H
 
 
-#include <iostream>
-#include <Map.h>
-#include "Object.h"
 #include "Deco.h"
+#include "Hero.h"
+#include "Object.h"
+#include <Map.h>
+#include <iostream>
 class ObjectFactory {
     Map& mMapPtr{Map::GetInstance()};
     std::vector<std::shared_ptr<Object>> mObjects;
-//    std::shared_ptr<Hero> mHero{std::make_shared<BasicHero>()};
+    std::shared_ptr<Hero> mHero{std::make_shared<BasicHero>()};
 
     uint16_t CalculateIndex(const uint8_t& row, const uint8_t& collum);
 public:
     ObjectFactory();
     const std::vector<std::shared_ptr<Object>>& GetObject(){return mObjects;}
-//    std::shared_ptr<Hero> GetHero(){return mHero;}
-//    uint16_t Pos2Index(XYWH Pos){return mMapPtr->GetVectorIndex(GamePosition::GetGamePos(Pos.Y), GamePosition::GetGamePos(Pos.X));}
-//    std::shared_ptr<Object> GetObject(XYWH Pos)
-//    {return mObjects[Pos2Index(Pos)];}
-//    void Erase(XYWH Pos)
-//    {mObjects[Pos2Index(Pos)] = std::make_shared<GrassDeco>(GamePosition::GetGamePos(Pos.X),GamePosition::GetGamePos(Pos.Y));}
-//    std::shared_ptr<Object> Move(XYWH Pos, Direction dir);
+
+
+    //inline functions
+    std::shared_ptr<Hero> GetHero()
+        {return mHero;}
+    uint16_t Pos2Index(const Co &Pos)
+        {return mMapPtr.GetVectorIndex(Pos.Y, Pos.X);}
+    std::shared_ptr<Object> GetObject(const Co &Pos)
+        {return mObjects[Pos2Index(Pos)];}
+    void Erase(const Co &Pos)
+        {mObjects[Pos2Index(Pos)] = std::make_shared<GrassDeco>(Pos.X,Pos.Y);}
+    std::shared_ptr<Object> Move(Co Pos, UserEvent dir);
 };
 
 #endif //TEMPLATE_OBJECTFACTORY_H

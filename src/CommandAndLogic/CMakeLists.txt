@@ -9,6 +9,7 @@ set(LIBRARY_SOURCES
         "${CMAKE_CURRENT_SOURCE_DIR}/CommandDispatcher.cpp"
         "${CMAKE_CURRENT_SOURCE_DIR}/AbstractManager.cpp"
         "${CMAKE_CURRENT_SOURCE_DIR}/WindowManager.cpp"
+        "${CMAKE_CURRENT_SOURCE_DIR}/MovementManager.cpp"
 
 )
 set(LIBRARY_HEADERS
@@ -17,6 +18,7 @@ set(LIBRARY_HEADERS
         "${CMAKE_CURRENT_SOURCE_DIR}/CommandDispatcher.h"
         "${CMAKE_CURRENT_SOURCE_DIR}/AbstractManager.h"
         "${CMAKE_CURRENT_SOURCE_DIR}/WindowManager.h"
+        "${CMAKE_CURRENT_SOURCE_DIR}/MovementManager.h"
 
 )
 

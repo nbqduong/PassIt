@@ -24,7 +24,7 @@ void Deco::ChangeFrame() {
     // if(mFrame >= DEFAULT::mHeroMaxFrame) {
     //     mFrame = 0;
     // }
-    // mSrc = GamePosition::GetSrc(mFrame++,0);
+    // mSrc = Position::GetSrc(mFrame++,0);
 }
 
 Deco::~Deco() {

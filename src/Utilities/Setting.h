@@ -103,6 +103,7 @@ public:
     static uint16_t toPx(uint16_t P){return P*MainWindowSetting::Instance().GetViewUnit();}
     static Co toPx(uint16_t X, uint16_t Y){return {static_cast<uint16_t >(X*MainWindowSetting::Instance().GetViewUnit()),static_cast<uint16_t >(Y*MainWindowSetting::Instance().GetViewUnit())};}
     static Co toPx(Co c){return {static_cast<uint16_t >(c.X*MainWindowSetting::Instance().GetViewUnit()),static_cast<uint16_t >(c.Y*MainWindowSetting::Instance().GetViewUnit())};}
+    static Co toCx(Co p){return {static_cast<uint16_t>(p.X/MainWindowSetting::GetViewUnit()),static_cast<uint16_t>(p.Y/MainWindowSetting::GetViewUnit())};}
     static Co WindowSize(string_view size);
     static const string Asset(const string file){return (std::string(_materials)+file+".png");}
 };
