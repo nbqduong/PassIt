@@ -8,7 +8,7 @@
 
 #include "Input.h"
 #include "MovementManager.h"
-#include "ObjectFactory.h"
+#include "ObjectManager.h"
 #include "SettingObject.h"
 #include "Window.h"
 #include "config.hpp"
@@ -42,9 +42,9 @@ public:
 
 class MainWindow : public WindowManager
 {
-    shared_ptr<ObjectFactory> mObjects;
+    shared_ptr<ObjectManager> mObjects;
     unique_ptr<MovementManager> mMove;
-
+    shared_ptr<ObjectFactory> GetObjectTemplate(const string map);
 public:
     MainWindow(vector<OptionInfo> info);
     void ExecuteCommand(UserEvent event);

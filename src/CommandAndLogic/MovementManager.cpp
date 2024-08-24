@@ -4,7 +4,7 @@
 
 #include "MovementManager.h"
 
-MovementManager::MovementManager(std::shared_ptr<ObjectFactory> objects)
+MovementManager::MovementManager(std::shared_ptr<ObjectManager> objects)
 {
     mObjects = objects;
     mHero = mObjects->GetHero();

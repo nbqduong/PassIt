@@ -23,12 +23,23 @@ public:
 
 class Rock : public DynamicObject {
 public:
-    Rock(uint8_t collum=0, uint8_t row=0, uint8_t width = 1, uint8_t height = 1)
-        :DynamicObject(Convert::Asset("Rock"), "Rock", collum,row,width,height) {}
+    Rock(const string link, uint8_t collum=0, uint8_t row=0, uint8_t width = 1, uint8_t height = 1)
+        :DynamicObject(link, "Rock", collum,row,width,height) {}
     TouchEvent Touched() override;
     void Move(UserEvent dir) override;
 
 };
 
+class BeachRock : public Rock {
+    public:
+    BeachRock( uint8_t collum, uint8_t row, uint8_t width=1, uint8_t height=1)
+        :Rock(Convert::Asset("Beach/Rock"), collum,row,width,height) {}
+};
+
+class IceRock : public Rock {
+public:
+    IceRock( uint8_t collum, uint8_t row, uint8_t width=1, uint8_t height=1)
+        :Rock(Convert::Asset("Ice/Rock"), collum,row,width,height) {}
+};
 
 #endif //TEMPLATE_DYNAMICOBJECT_H

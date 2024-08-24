@@ -42,8 +42,12 @@ MainWindow::MainWindow(vector<OptionInfo> info)
     //Create window
     mWindow = make_shared<Windows>(std::string(project_name), MainWindowSetting::GetScreenPX(), MainWindowSetting::GetScreenPY());
 
+    //Get MAP
+    shared_ptr<ObjectFactory> object_template = GetObjectTemplate(info.at(1).Get());
+
+
     //Create game objects
-    mObjects = make_shared<ObjectFactory>();
+    mObjects = make_shared<ObjectManager>(object_template);
     mMove = make_unique<MovementManager>(mObjects);
 //    auto a = mObjects->GetObject();
     mWindow->SetObject(&mObjects->GetObject());
@@ -67,4 +71,13 @@ void MainWindow::ExecuteCommand(UserEvent event)
         mWindow->Render();
     }
 
+}
+
+shared_ptr<ObjectFactory> MainWindow::GetObjectTemplate(const string map) {
+    if(map.compare("Ice")==0) {
+        return make_shared<IceObjectFactory>();
+    }
+    else {
+        return make_shared<BeachObjectFactory>();
+    }
 }

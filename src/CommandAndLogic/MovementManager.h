@@ -8,16 +8,16 @@
 #include <Hero.h>
 #include <memory>
 #include "Position.h"
-#include "ObjectFactory.h"
+#include "ObjectManager.h"
 
 
 class MovementManager {
     static std::shared_ptr<MovementManager> mInstance;
-    std::shared_ptr<ObjectFactory> mObjects;
+    std::shared_ptr<ObjectManager> mObjects;
     std::shared_ptr<Hero> mHero;
 
 public:
-    MovementManager(std::shared_ptr<ObjectFactory> objects);
+    MovementManager(std::shared_ptr<ObjectManager> objects);
     void Move(UserEvent event );
     void HandleCollision(UserEvent direction);
     void GrassInterract(Co pos);

@@ -25,9 +25,6 @@ std::vector<std::shared_ptr<TextObject>> TextFactory::CreateSettingWindow()
 
 //    tmp.push_back(TextFactory::GetInstance().CreateTitle("PassIt Setting"));
 
-
-
-
     return tmp;
 }
 

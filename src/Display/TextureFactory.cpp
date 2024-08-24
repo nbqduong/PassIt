@@ -23,7 +23,8 @@ bool TextureFactory::Load(std::string id, std::string filename){
     auto it_texture = mTextureMap.find(id);
     if (it_texture != mTextureMap.end())
     {
-        Drop(id);
+        return false ;
+        // Drop(id);
     }
 
     SDL_Surface* surface = IMG_Load(filename.c_str());
@@ -75,7 +76,7 @@ void TextureFactory::DrawFrame(std::string id, Co dst_pos, Co src_pos, Co src_ra
     } else {
         // Handle the case where the texture is not found
         // Optionally log an error or take corrective action
-        SDL_Log("[TextureFactory] Could not found ", id.c_str());
+        SDL_Log("[TextureFactory] Could not found %s", id.c_str());
     }
 }
 void TextureFactory::setRenderer(SDL_Renderer* renderer){
