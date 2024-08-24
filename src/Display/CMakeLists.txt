@@ -15,7 +15,7 @@ set(LIBRARY_HEADERS
 )
 
 #include more
-set(LIBRARIES_TO_LINK Utilities SDL2_ttf ${SDL2_LIBRARIES} ${SDL2_IMAGE_LIBRARIES})
+set(LIBRARIES_TO_LINK Utilities SDL2_ttf SDL2 SDL2_image)
 #----------------------------------------------------#
 
 add_library(${LIBRARY_NAME} STATIC ${LIBRARY_SOURCES} ${LIBRARY_HEADERS})

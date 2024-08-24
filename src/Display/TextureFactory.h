@@ -41,7 +41,7 @@ public:
 
     //for text
     bool addText(std::string id,std::string textureText, SDL_Color textColor);
-    bool setFont(uint16_t  size = 12,std::string font_path = MainWindowSetting::GetFontPath());
+    void setFont(uint16_t  size = 12,std::string font_path = MainWindowSetting::GetFontPath());
     void viewText(std::string id,int x, int y, SDL_Rect* clip = NULL, double angle = 0.0, SDL_Point* center = NULL, SDL_RendererFlip flip = SDL_FLIP_NONE );
 
 };

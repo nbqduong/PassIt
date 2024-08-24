@@ -11,6 +11,7 @@ TextureFactory::TextureFactory(uint16_t  text_size ,std::string font_path )
     gFont = TTF_OpenFont( font_path.c_str(), text_size );
     if( gFont == NULL )
     {
+        TTF_CloseFont( gFont );
         throw Exception{"Failed to load lazy font! SDL_ttf Error:" + std::string(TTF_GetError()) };
 
     }
@@ -32,12 +33,14 @@ bool TextureFactory::Load(std::string id, std::string filename){
     }
 
     SDL_Texture* texture = SDL_CreateTextureFromSurface(mRenderer, surface);
+    SDL_FreeSurface( surface );
     if(texture == nullptr){
         SDL_Log("Failed to create texture from surface: %s", SDL_GetError());
         return false;
     }
 
     mTextureMap[id] = texture;
+    
     return true;
 }
 void TextureFactory::Drop(std::string id){
@@ -45,6 +48,7 @@ void TextureFactory::Drop(std::string id){
     mTextureMap.erase(id);
 }
 void TextureFactory::Clean(){
+    TTF_CloseFont( gFont );
     std::map<std::string, SDL_Texture*>::iterator it;
     for(it = mTextureMap.begin(); it != mTextureMap.end(); it++)
         SDL_DestroyTexture(it->second);
@@ -122,8 +126,13 @@ bool TextureFactory::addText(std::string id, std::string textureText, SDL_Color 
     return mTexture != NULL;
 }
 
-bool TextureFactory::setFont(uint16_t size, std::string font_path)
+void TextureFactory::setFont(uint16_t size, std::string font_path)
 {
+    if(gFont != nullptr) {
+        	//Free global font
+	TTF_CloseFont( gFont );
+	gFont = NULL;
+    }
     //Open the font
     gFont = TTF_OpenFont( font_path.c_str(), size );
     if( gFont == NULL )

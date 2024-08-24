@@ -16,11 +16,17 @@ set(CMAKE_CXX_STANDARD 20)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_CXX_EXTENSIONS OFF)
 set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
-set(SDL2_IMAGE_LIBRARIES "/usr/local/lib/libSDL2_image.so")
+#set(SDL2_IMAGE_LIBRARIES "/usr/local/lib/libSDL2_image.so")
 #----------------------------------------------------#
 # package
-find_package(SDL2 REQUIRED)
-find_package(SDL2_image REQUIRED)
+#find_package(SDL2 REQUIRED)
+
+set(CMAKE_BUILD_WITH_INSTALL_RPATH OFF)
+## Add this to your CMakeLists.txt
+#set(CMAKE_INSTALL_RPATH_USE_LINK_PATH TRUE)
+#set(CMAKE_BUILD_RPATH_USE_ORIGIN TRUE)
+#set(CMAKE_INSTALL_RPATH "")
+
 
 
 option(USE_CPM "Whether to use CPM." ON)
@@ -33,7 +39,7 @@ option(ENABLE_COVERAGE "Enable a Code Coverage build." OFF)
 
 option(ENABLE_CLANG_TIDY "Enable to add clang tidy." ON)
 
-option(ENABLE_SANITIZE_ADDR "Enable address sanitize." ON)
+option(ENABLE_SANITIZE_ADDR "Enable address sanitize." OFF)
 option(ENABLE_SANITIZE_UNDEF "Enable undefined sanitize." ON)
 option(ENABLE_SANITIZE_LEAK "Enable leak sanitize (Gcc/Clang only)." ON)
 option(ENABLE_SANITIZE_THREAD "Enable thread sanitize (Gcc/Clang only)." OFF)
@@ -81,6 +87,9 @@ endif()
 if(USE_CPM)
     message(STATUS "Using CPM")
     include(CPM)
+
+    cpmaddpackage("gh:libsdl-org/SDL#release-2.30.6")
+    cpmaddpackage("gh:libsdl-org/SDL_image#release-2.8.2")
     cpmaddpackage("gh:libsdl-org/SDL_ttf#release-2.22.0")
     if(ENABLE_TESTING)
         cpmaddpackage("gh:catchorg/Catch2#v3.5.3")

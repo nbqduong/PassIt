@@ -1,8 +1,8 @@
 #include "Engine.h"
 #include "config.hpp"
 #include <Input.h>
-#include <SDL2/SDL_image.h>
-#include <SDL2/SDL_ttf.h>
+#include <SDL_image.h>
+#include <SDL_ttf.h>
 #include <filesystem>
 #include <fstream>
 #include <iostream>
@@ -10,6 +10,7 @@
 
 int main( int argc, char* args[] )
 {
+    // int * a = new int;
     try{
         Engine::GetInstance().Start();
 

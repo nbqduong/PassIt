@@ -4,12 +4,12 @@
 
 #ifndef WINDOWS_H
 #define WINDOWS_H
-#include "SDL2/SDL_image.h"
+#include "SDL_image.h"
 
 #include "TextureFactory.h"
 #include "TextureManager.h"
 #include <Exception.h>
-#include <SDL2/SDL.h>
+#include <SDL.h>
 #include <iostream>
 #include <memory>
 #include <mutex>
