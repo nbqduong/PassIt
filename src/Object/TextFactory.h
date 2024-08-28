@@ -30,7 +30,7 @@ public:
     vector<shared_ptr<TextObject>> CreateOption(const string name , const string opt);
 
     //Create normal text
-
+    shared_ptr<TextObject> CreateText(const string name, Co pos);
 
     //Create small text for noting
 

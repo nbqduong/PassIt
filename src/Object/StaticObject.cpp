@@ -36,6 +36,7 @@ TouchEvent Box::Touched() {
 }
 
 TouchEvent Chest::Touched() {
+    this->mInfo.mSource.X = 1;
     return TouchEvent::emPass;
 }
 

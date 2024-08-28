@@ -5,7 +5,7 @@
 #include "ObjectManager.h"
 #include "DynamicObject.h"
 #include "Position.h"
-ObjectManager::ObjectManager(shared_ptr<ObjectFactory> factory):mFactory{factory} {
+ObjectManager::ObjectManager(shared_ptr<ObjectFactory> factory, shared_ptr<Hero> hero):mFactory{factory}, mHero{hero} {
     mObjects.resize(mMapPtr.GetSize()+1,nullptr);
 
     for (int row = 0; row < mMapPtr.GetHeight(); ++row) {
@@ -43,6 +43,7 @@ ObjectManager::ObjectManager(shared_ptr<ObjectFactory> factory):mFactory{factory
     }
     mObjects.push_back(mHero);
 }
+
 //Move dinamic object from pos following dir and return moved object
 std::shared_ptr<Object> ObjectManager::Move(Co Pos, UserEvent dir){
     auto _object = GetObject(Pos);

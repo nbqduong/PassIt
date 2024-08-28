@@ -30,6 +30,7 @@ enum class UserEvent {
     emRight,
     emSpace,
     emR,
+    emT,
     emRepeat,
     emNone,
 };
@@ -83,6 +84,7 @@ class MainWindowSetting
     static uint16_t mSourceUnit;
     static uint16_t mFrame;
     static vector<OptionInfo> mOptions;
+    static vector<string> mPause;
     MainWindowSetting();
 public:
     static MainWindowSetting& Instance();
@@ -95,17 +97,32 @@ public:
     static uint16_t GetSourceUnit(){return mSourceUnit;}
     static uint16_t GetFrame(){return mFrame;}
     static vector<OptionInfo> GetOptions(){return mOptions;}
+    static vector<string> GetPasue(){return mPause;}
 };
 
 class Convert
 {
 public:
-    static uint16_t toPx(uint16_t P){return P*MainWindowSetting::Instance().GetViewUnit();}
-    static Co toPx(uint16_t X, uint16_t Y){return {static_cast<uint16_t >(X*MainWindowSetting::Instance().GetViewUnit()),static_cast<uint16_t >(Y*MainWindowSetting::Instance().GetViewUnit())};}
-    static Co toPx(Co c){return {static_cast<uint16_t >(c.X*MainWindowSetting::Instance().GetViewUnit()),static_cast<uint16_t >(c.Y*MainWindowSetting::Instance().GetViewUnit())};}
-    static Co toCx(Co p){return {static_cast<uint16_t>(p.X/MainWindowSetting::GetViewUnit()),static_cast<uint16_t>(p.Y/MainWindowSetting::GetViewUnit())};}
-    static Co WindowSize(string_view size);
-    static const string Asset(const string file){return (std::string(_materials)+file+".png");}
+    static uint16_t toPx(uint16_t P)
+        {return P*MainWindowSetting::Instance().GetViewUnit();}
+
+    static Co toPx(uint16_t X, uint16_t Y)
+        {return {static_cast<uint16_t >(X*MainWindowSetting::Instance().GetViewUnit()),static_cast<uint16_t >(Y*MainWindowSetting::Instance().GetViewUnit())};}
+
+    static Co toPx(Co c){return
+        {static_cast<uint16_t >(c.X*MainWindowSetting::Instance().GetViewUnit()),static_cast<uint16_t >(c.Y*MainWindowSetting::Instance().GetViewUnit())};}
+
+    static Co SourcetoPx(Co c){return
+       {static_cast<uint16_t >(c.X*MainWindowSetting::Instance().GetSourceUnit()),static_cast<uint16_t >(c.Y*MainWindowSetting::Instance().GetSourceUnit())};}
+
+    static Co toCx(Co p)
+        {return {static_cast<uint16_t>(p.X/MainWindowSetting::GetViewUnit()),static_cast<uint16_t>(p.Y/MainWindowSetting::GetViewUnit())};}
+
+    static Co WindowSize
+        (string_view size);
+
+    static const string Asset(const string file)
+        {return (std::string(_materials)+file+".png");}
 };
 
 

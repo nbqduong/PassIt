@@ -31,6 +31,7 @@ void SettingWindow::ExecuteCommand(UserEvent event)
 
 PauseWindow::PauseWindow(): WindowManager(std::string(project_name)+" Pause", 800,600, 600,200)
 {
+    mWindow->SetText(mObject.GetPauseText());
     mWindow->Render();
 }
 
@@ -42,14 +43,16 @@ MainWindow::MainWindow(vector<OptionInfo> info)
     //Create window
     mWindow = make_shared<Windows>(std::string(project_name), MainWindowSetting::GetScreenPX(), MainWindowSetting::GetScreenPY());
 
-    //Get MAP
+    //Get MAP and Hero
     shared_ptr<ObjectFactory> object_template = GetObjectTemplate(info.at(1).Get());
+    shared_ptr<Hero> hero = GetHero(info.at(0).Get());
 
+    //Lister from hero
+    hero->Attach(this);
 
     //Create game objects
-    mObjects = make_shared<ObjectManager>(object_template);
+    mObjects = make_shared<ObjectManager>(object_template, hero);
     mMove = make_unique<MovementManager>(mObjects);
-//    auto a = mObjects->GetObject();
     mWindow->SetObject(&mObjects->GetObject());
     mWindow->RegisterObject();
     mWindow->Render();
@@ -73,6 +76,11 @@ void MainWindow::ExecuteCommand(UserEvent event)
 
 }
 
+void MainWindow::Update(any event) {
+    mWindow->Render();
+}
+
+
 shared_ptr<ObjectFactory> MainWindow::GetObjectTemplate(const string map) {
     if(map.compare("Ice")==0) {
         return make_shared<IceObjectFactory>();
@@ -80,4 +88,13 @@ shared_ptr<ObjectFactory> MainWindow::GetObjectTemplate(const string map) {
     else {
         return make_shared<BeachObjectFactory>();
     }
+}
+
+shared_ptr<Hero> MainWindow::GetHero(const string hero) {
+    if(hero.compare("Simple")==0) {
+        return make_shared<SimpleHero>();
+    }
+
+    return make_shared<BasicHero>();
+
 }

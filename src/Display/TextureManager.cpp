@@ -38,7 +38,7 @@ void TextureManager::ShowText()
     {
         for (auto& obj : *mObjects) {
             if(obj != nullptr)
-                mFactory.DrawFrame(obj->GetInfo().mDrawID, Convert::toPx(obj->GetInfo().mView), Convert::toPx(obj->GetInfo().mSource));
+                mFactory.DrawFrame(obj->GetInfo().mDrawID, Convert::toPx(obj->GetInfo().mView), Convert::SourcetoPx(obj->GetInfo().mSource));
         }
     }
 

@@ -18,6 +18,7 @@ const vector<shared_ptr<TextObject>>&SettingFactory::CreateSettings()
         mTexts.insert(mTexts.end(),tmp_opt.begin(), tmp_opt.end());
     }
     mMaxSetting = static_cast<int>(mOptions.size());
+
     //Change visual of curren setting
     mTexts.at((mCurrentSetting+1)*2)->Resize(30);
     return mTexts;

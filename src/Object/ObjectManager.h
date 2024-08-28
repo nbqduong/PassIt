@@ -18,11 +18,11 @@ class ObjectManager {
     shared_ptr<ObjectFactory> mFactory;
     Map& mMapPtr{Map::GetInstance()};
     std::vector<std::shared_ptr<Object>> mObjects;
-    std::shared_ptr<Hero> mHero{std::make_shared<BasicHero>()};
+    std::shared_ptr<Hero> mHero;
 
     uint16_t CalculateIndex(const uint8_t& row, const uint8_t& collum);
 public:
-    ObjectManager(shared_ptr<ObjectFactory> factory);
+    ObjectManager(shared_ptr<ObjectFactory> factory, shared_ptr<Hero> hero);
     const std::vector<std::shared_ptr<Object>>& GetObject(){return mObjects;}
 
 

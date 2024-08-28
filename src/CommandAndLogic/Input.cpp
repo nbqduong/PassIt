@@ -39,7 +39,7 @@ void KeyBoard::KeyDown() {
         if(GetKey(SDL_SCANCODE_RIGHT) == 1) mEvent =  UserEvent::emRight;
         if(GetKey(SDL_SCANCODE_SPACE) == 1) mEvent =  UserEvent::emSpace;
         if(GetKey(SDL_SCANCODE_R) == 1) mEvent =  UserEvent::emR;
-
+        if(GetKey(SDL_SCANCODE_T) == 1) mEvent =  UserEvent::emT;
         if(GetKey(SDL_SCANCODE_ESCAPE) == 1) mEvent =  UserEvent::emQuit;
     }
     mIsPressed = true;

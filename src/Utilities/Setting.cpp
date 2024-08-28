@@ -16,6 +16,10 @@ vector<OptionInfo> MainWindowSetting::mOptions{
     {"WindowSize",{"Medium","Large", "FullScreen"}},
 };
 
+vector<string> MainWindowSetting::mPause{
+"R to resume","T to restart", "Space to main setting", "ESC to exit"
+};
+
 MainWindowSetting::MainWindowSetting()
 {}
 

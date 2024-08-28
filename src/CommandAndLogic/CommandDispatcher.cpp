@@ -21,11 +21,13 @@ void CommandDispatcher::Dispatch(UserEvent event)
             mPopUpWindow = nullptr;
             mCurrentWindow = make_shared<SettingWindow>();
             break;
-        default:
-            //not handle restart game yet
-
+        case UserEvent::emT:
+            mPopUpWindow = nullptr;
+            mCurrentWindow = nullptr;
+            mCurrentWindow = make_shared<MainWindow>(mSetting);
             break;
-
+        default:
+            break;
         }
     }else
     {
@@ -54,3 +56,4 @@ void CommandDispatcher::Dispatch(UserEvent event)
         }
     }
 }
+
