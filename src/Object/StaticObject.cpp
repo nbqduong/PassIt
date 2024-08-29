@@ -4,6 +4,8 @@
 
 #include "StaticObject.h"
 
+#include "Score.h"
+
 
 StaticObject::StaticObject(const string link, const std::string &m_id, uint16_t x, uint16_t y, uint32_t width, uint32_t height) :Object(link,m_id,{x,y})
 {
@@ -37,6 +39,7 @@ TouchEvent Box::Touched() {
 
 TouchEvent Chest::Touched() {
     this->mInfo.mSource.X = 1;
+    Score::GetInstance().CollectKey();
     return TouchEvent::emPass;
 }
 
@@ -57,5 +60,8 @@ TouchEvent Grass::Touched() {
 uint16_t StaticObject::mObjectCount = 0;
 
 TouchEvent Gate::Touched() {
+    if(Score::GetInstance().IsCollectAllKey()) {
+        return TouchEvent::emPass;
+    }
     return TouchEvent::emBlock;
 }

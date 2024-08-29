@@ -4,6 +4,8 @@
 
 #include "WindowManager.h"
 
+#include "Score.h"
+
 
 WindowManager::WindowManager(std::string_view windows_name, uint16_t size_PX, uint16_t size_PY, uint16_t pos_PX, uint16_t pos_PY)
 
@@ -42,6 +44,9 @@ MainWindow::MainWindow(vector<OptionInfo> info)
     MainWindowSetting::Instance().Set(main_size.X, main_size.Y);
     //Create window
     mWindow = make_shared<Windows>(std::string(project_name), MainWindowSetting::GetScreenPX(), MainWindowSetting::GetScreenPY());
+
+    //Reset Score
+    Score::GetInstance().Reset();
 
     //Get MAP and Hero
     shared_ptr<ObjectFactory> object_template = GetObjectTemplate(info.at(1).Get());

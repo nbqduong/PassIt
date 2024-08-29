@@ -7,6 +7,7 @@ set(LIBRARY_SOURCES
         "${CMAKE_CURRENT_SOURCE_DIR}/Setting.cpp"
         "${CMAKE_CURRENT_SOURCE_DIR}/Frame.cpp"
         "${CMAKE_CURRENT_SOURCE_DIR}/Position.cpp"
+
 )
 set(LIBRARY_HEADERS
         "${CMAKE_CURRENT_SOURCE_DIR}/Setting.h"
@@ -17,6 +18,7 @@ set(LIBRARY_HEADERS
         "${CMAKE_CURRENT_SOURCE_DIR}/Object.h"
         "${CMAKE_CURRENT_SOURCE_DIR}/Map.h"
         "${CMAKE_CURRENT_SOURCE_DIR}/Position.h"
+        "${CMAKE_CURRENT_SOURCE_DIR}/Score.h"
 
 )
 
