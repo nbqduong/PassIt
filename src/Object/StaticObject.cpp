@@ -61,7 +61,8 @@ uint16_t StaticObject::mObjectCount = 0;
 
 TouchEvent Gate::Touched() {
     if(Score::GetInstance().IsCollectAllKey()) {
-        return TouchEvent::emPass;
+        mEvent = string("Finish");
+        Notify();
     }
     return TouchEvent::emBlock;
 }

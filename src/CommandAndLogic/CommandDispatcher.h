@@ -14,16 +14,18 @@
 using std::make_shared;
 using std::make_shared;
 
-class CommandDispatcher
+class CommandDispatcher : private Observer, public Subject
 {
 public:
     //Dispatch even
     void Dispatch(UserEvent event);
-
+    void Update(any event) override;
 private:
     std::shared_ptr<WindowManager> mCurrentWindow{make_shared<SettingWindow>()},
     mPopUpWindow{nullptr};
     vector<OptionInfo> mSetting;
+
+    void CreateMainWindow();
 
 };
 

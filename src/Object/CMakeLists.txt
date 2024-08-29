@@ -12,6 +12,8 @@ set(LIBRARY_SOURCES
         "${CMAKE_CURRENT_SOURCE_DIR}/DynamicObject.cpp"
         "${CMAKE_CURRENT_SOURCE_DIR}/Hero.cpp"
         "${CMAKE_CURRENT_SOURCE_DIR}/PauseObject.cpp"
+        "${CMAKE_CURRENT_SOURCE_DIR}/EndObject.cpp"
+
 
 
 )
@@ -25,6 +27,7 @@ set(LIBRARY_HEADERS
         "${CMAKE_CURRENT_SOURCE_DIR}/Hero.h"
         "${CMAKE_CURRENT_SOURCE_DIR}/ObjectFactory.h"
         "${CMAKE_CURRENT_SOURCE_DIR}/PauseObject.h"
+        "${CMAKE_CURRENT_SOURCE_DIR}/EndObject.h"
 
 
 )

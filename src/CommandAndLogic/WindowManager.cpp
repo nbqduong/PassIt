@@ -37,6 +37,12 @@ PauseWindow::PauseWindow(): WindowManager(std::string(project_name)+" Pause", 80
     mWindow->Render();
 }
 
+EndWindow::EndWindow(): WindowManager(std::string(project_name)+" Finish", 800,600, 600,200)
+{
+    mWindow->SetText(mObject.GetTextObject());
+    mWindow->Render();
+}
+
 MainWindow::MainWindow(vector<OptionInfo> info)
 {
     //Set main window size
@@ -52,15 +58,17 @@ MainWindow::MainWindow(vector<OptionInfo> info)
     shared_ptr<ObjectFactory> object_template = GetObjectTemplate(info.at(1).Get());
     shared_ptr<Hero> hero = GetHero(info.at(0).Get());
 
-    //Lister from hero
-    hero->Attach(this);
-
     //Create game objects
     mObjects = make_shared<ObjectManager>(object_template, hero);
     mMove = make_unique<MovementManager>(mObjects);
     mWindow->SetObject(&mObjects->GetObject());
     mWindow->RegisterObject();
     mWindow->Render();
+
+    //Register envents
+    hero->Attach(this);
+    auto Gate = mObjects->GetGate();
+    Gate->Attach(this);
 }
 
 void MainWindow::ExecuteCommand(UserEvent event)
@@ -81,6 +89,20 @@ void MainWindow::ExecuteCommand(UserEvent event)
 }
 
 void MainWindow::Update(any event) {
+    if(event.has_value()) {
+        try {
+            auto levent = std::any_cast<string>(event);
+            std::cout << levent << std::endl;
+            if(levent == "Finish") {
+                mEvent = event;
+                Notify();
+            }
+        }
+        catch(const std::bad_any_cast&) {
+            throw Exception{"Bad event cast"};
+        }
+    }
+
     mWindow->Render();
 }
 

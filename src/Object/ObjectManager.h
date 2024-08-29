@@ -19,7 +19,7 @@ class ObjectManager {
     Map& mMapPtr{Map::GetInstance()};
     std::vector<std::shared_ptr<Object>> mObjects;
     std::shared_ptr<Hero> mHero;
-
+    shared_ptr<Object> mGate;
     uint16_t CalculateIndex(const uint8_t& row, const uint8_t& collum);
 public:
     ObjectManager(shared_ptr<ObjectFactory> factory, shared_ptr<Hero> hero);
@@ -29,12 +29,16 @@ public:
     //inline functions
     std::shared_ptr<Hero> GetHero()
         {return mHero;}
+    std::shared_ptr<Object> GetGate()
+        {return mGate;}
     uint16_t Pos2Index(const Co &Pos)
         {return mMapPtr.GetVectorIndex(Pos.Y, Pos.X);}
     std::shared_ptr<Object> GetObject(const Co &Pos)
         {return mObjects[Pos2Index(Pos)];}
     void Erase(const Co &Pos)
         {mObjects[Pos2Index(Pos)] = mFactory->GetGrass(Pos.X, Pos.Y);}
+
+
     std::shared_ptr<Object> Move(Co Pos, UserEvent dir);
 };
 

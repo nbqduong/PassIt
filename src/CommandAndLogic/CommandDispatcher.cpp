@@ -23,8 +23,7 @@ void CommandDispatcher::Dispatch(UserEvent event)
             break;
         case UserEvent::emT:
             mPopUpWindow = nullptr;
-            mCurrentWindow = nullptr;
-            mCurrentWindow = make_shared<MainWindow>(mSetting);
+            CreateMainWindow();
             break;
         default:
             break;
@@ -43,10 +42,10 @@ void CommandDispatcher::Dispatch(UserEvent event)
                 try {
                     mSetting = std::any_cast<vector<OptionInfo>>(info);
                 } catch (const std::bad_any_cast& e) {
-                    std::cerr << "Bad cast: " << e.what() << std::endl;
+                    throw Exception{"Bad any cast for Option" + string(e.what())};
                 }
 
-                mCurrentWindow = make_shared<MainWindow>(mSetting);
+                CreateMainWindow();
             }
         }
         else
@@ -55,5 +54,28 @@ void CommandDispatcher::Dispatch(UserEvent event)
             mCurrentWindow->ExecuteCommand(event);
         }
     }
+}
+
+void CommandDispatcher::Update(any event) {
+    if(event.has_value()) {
+        try {
+            const string levent = std::any_cast<string>(event);
+            if(levent == "Finish") {
+                mPopUpWindow = make_shared<EndWindow>();
+            }
+        }
+        catch(const std::bad_any_cast&) {
+            throw Exception{"Bad event cast"};
+        }
+    }
+
+}
+
+void CommandDispatcher::CreateMainWindow() {
+    mCurrentWindow = nullptr;
+    auto Main =
+    // Main->Attach(this);
+    mCurrentWindow = make_shared<MainWindow>(mSetting);
+    mCurrentWindow->Attach(this);
 }
 

@@ -9,6 +9,8 @@
 #include <string>
 #include <Setting.h>
 
+#include "ObserverPattern.h"
+
 enum class TouchEvent {
     emBlock,
     emPass,
@@ -19,7 +21,7 @@ struct ObjInfo{
     std::string mDrawID, mID, mFileName;
 
 };
-class Object {
+class Object: public Subject{
 protected:
     ObjInfo mInfo;
 

@@ -9,7 +9,7 @@
 #include "ObserverPattern.h"
 using std::string;
 
-class Hero:public Object, public Subject{
+class Hero:public Object{
 public:
     Hero(const string link, const std::string &m_id , uint16_t x, uint16_t y, uint32_t width = 1, uint32_t height = 1);
     virtual void Move(uint32_t x, uint32_t y);

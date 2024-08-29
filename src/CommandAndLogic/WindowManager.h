@@ -14,6 +14,7 @@
 #include "config.hpp"
 #include <any>
 
+#include "EndObject.h"
 #include "ObserverPattern.h"
 #include "PauseObject.h"
 using std::any;
@@ -22,7 +23,8 @@ using std::make_shared;
 using std::unique_ptr;
 using std::make_unique;
 
-class WindowManager
+class WindowManager: public Subject
+
 {
 
 protected:
@@ -46,7 +48,7 @@ public:
 };
 
 
-class MainWindow : public WindowManager, public Observer
+class MainWindow : public WindowManager, private Observer
 {
 public:
     MainWindow(vector<OptionInfo> info);
@@ -68,6 +70,16 @@ public:
 
 private:
     PauseObject &mObject{PauseObject::GetInstance()};
+};
+
+class EndWindow : public WindowManager
+{
+public:
+    EndWindow();
+    void ExecuteCommand(UserEvent event){};
+
+private:
+    EndObject &mObject{EndObject::GetInstance()};
 };
 
 #endif //TEMPLATE_WINDOWMANAGER_H
