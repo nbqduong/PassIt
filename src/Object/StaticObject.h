@@ -133,4 +133,25 @@ public:
     IceBush(uint8_t collum, uint8_t row, uint8_t width=1, uint8_t height=1)
         :Bush(Convert::Asset("Ice/Bush"), collum, row,width,height) {}
 };
+
+//---------------------------Gate-----------------------------------
+
+class Gate : public StaticObject {
+public:
+    Gate(const string link, uint8_t collum=0, uint8_t row=0, uint8_t width = 1, uint8_t height = 1)
+        :StaticObject(link, "Gate", collum,row,width,height) {}
+    TouchEvent Touched() override;
+
+};
+
+class BeachGate : public Gate {
+public:
+    BeachGate(uint8_t collum, uint8_t row, uint8_t width=1, uint8_t height=1)
+        :Gate(Convert::Asset("Beach/Gate"), collum, row,width,height) {}
+};
+class IceGate : public Gate {
+public:
+    IceGate(uint8_t collum, uint8_t row, uint8_t width=1, uint8_t height=1)
+        :Gate(Convert::Asset("Ice/Gate"), collum, row,width,height) {}
+};
 #endif //TEMPLATE_DECO_H

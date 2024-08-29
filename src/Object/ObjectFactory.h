@@ -20,6 +20,7 @@ public:
     virtual shared_ptr<Bush> GetBush(uint16_t x, uint16_t y) = 0;
     virtual shared_ptr<Rock> GetRock(uint16_t x, uint16_t y) = 0;
     virtual shared_ptr<Chest> GetChest(uint16_t x, uint16_t y) = 0;
+    virtual shared_ptr<Gate> GetGate(uint16_t x, uint16_t y) = 0;
 
 };
 
@@ -40,6 +41,9 @@ class BeachObjectFactory : public ObjectFactory {
     shared_ptr<Rock> GetRock(uint16_t x, uint16_t y) override {
         return make_shared<BeachRock>(x,y);
     }
+    shared_ptr<Gate> GetGate(uint16_t x, uint16_t y) override {
+        return make_shared<BeachGate>(x,y);
+    }
 };
 
 class IceObjectFactory : public ObjectFactory {
@@ -58,6 +62,9 @@ public:
     }
     shared_ptr<Rock> GetRock(uint16_t x, uint16_t y) override {
         return make_shared<IceRock>(x,y);
+    }
+    shared_ptr<Gate> GetGate(uint16_t x, uint16_t y) override {
+        return make_shared<IceGate>(x,y);
     }
 };
 

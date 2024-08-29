@@ -53,4 +53,9 @@ TouchEvent Bush::Touched() {
 TouchEvent Grass::Touched() {
     return TouchEvent::emPass;
 }
+
 uint16_t StaticObject::mObjectCount = 0;
+
+TouchEvent Gate::Touched() {
+    return TouchEvent::emBlock;
+}

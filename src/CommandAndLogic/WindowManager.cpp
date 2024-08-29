@@ -70,7 +70,6 @@ void MainWindow::ExecuteCommand(UserEvent event)
             return;
         }
 
-//        mWindow->SetObject(mObjects->GetObject());
         mWindow->Render();
     }
 

@@ -27,6 +27,10 @@ ObjectManager::ObjectManager(shared_ptr<ObjectFactory> factory, shared_ptr<Hero>
                 mObjects[index]=(mFactory->GetChest(column, row));
 
                 break;
+            case 6:
+                mObjects[index]=(mFactory->GetGate(column, row));
+
+            break;
             // case 7:
                 // mObjects[index]=(std::make_shared<Water>(column, row));
                 // mObjects[index]=(mFactory->Get(column, row));
