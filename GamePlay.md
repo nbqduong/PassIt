@@ -7,12 +7,12 @@ When the player opens all the chests and moves to the magic gate(![Gate](assets/
 Player can press UP(↑), DOWN(↓), LEFT(←), RIGHT(→) for movement
 
 ## Map
-There is one round and two themes:
+There are two themes:
 - **Ice map:**
-![IceMap]()
+![IceMap](demo/IceTheme.png)
 
 - **Forest map:**
-![ForestMap]()
+![ForestMap](demo/ForestTheme.png)
 
 ## Objects
 Objects in each theme have different outlooks but the same interaction:
