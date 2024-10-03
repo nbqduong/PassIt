@@ -19,20 +19,20 @@ Objects in each theme have different outlooks but the same interaction:
 
 ### Bush
 - This is a temporary object, the player can walk into it, and then it will disappear. 
-- Ice bush: ![IceBush](https://github.com/nbqduong/PassIt/blob/main/assets/Ice/Bush.png)
-- Forest bush: ![ForestBush](https://github.com/nbqduong/PassIt/blob/main/assets/Beach/Bush.png)
-- Demo:
+- Ice: ![IceBush](https://github.com/nbqduong/PassIt/blob/main/assets/Ice/Bush.png)
+Forest: ![ForestBush](https://github.com/nbqduong/PassIt/blob/main/assets/Beach/Bush.png)
+- Demo: ![BushDemo](demo/bush-interrac.gif)
 
 ### Rock
 - This is a solid object, the player can push it horizontally, and it will fall if there is nothing under it. 
-- Ice rock: ![IceRock](https://github.com/nbqduong/PassIt/blob/main/assets/Ice/Rock.png)
-- Forest rock: ![ForestRock](https://github.com/nbqduong/PassIt/blob/main/assets/Beach/Rock.png)
-- Demo:
+- Ice: ![IceRock](https://github.com/nbqduong/PassIt/blob/main/assets/Ice/Rock.png)
+ Forest: ![ForestRock](https://github.com/nbqduong/PassIt/blob/main/assets/Beach/Rock.png)
+- Demo: ![RockDemo](demo/rock-interract.gif)
 
 ### Tree
 - This is a solid object, the player cannot pass it. 
-- Ice tree: ![IceTree](https://github.com/nbqduong/PassIt/blob/main/assets/Ice/Box.png)
-- Forest tree: ![ForestTree](https://github.com/nbqduong/PassIt/blob/main/assets/Beach/Box.png)
+- Ice: ![IceTree](https://github.com/nbqduong/PassIt/blob/main/assets/Ice/Box.png)
+ Forest: ![ForestTree](https://github.com/nbqduong/PassIt/blob/main/assets/Beach/Box.png)
 
 ### Chest
 - The player can open it and collect a key.
@@ -41,3 +41,6 @@ Objects in each theme have different outlooks but the same interaction:
 ### Gate
 - After collecting all chests, after contact with the gate, it will open and the player win the game.
 - Gate: (![Gate](assets/Ice/Gate.png))
+
+## Gameplay example
+![GamePlay](demo/demo-gameplay.gif)
