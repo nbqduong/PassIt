@@ -3,10 +3,13 @@
 ## Game demo
 ![Demo](https://github.com/nbqduong/PassIt/blob/main/demo/demo-gameplay.gif)
 
+**[Detail gameplay and explainations](GamePlay.md)**
 
-**This is a small puzzle game**.
-- Built with C++17 standard
-- Using SDL2 library 
+## Technical
+**This is a small puzzle game built with C++ from scratch**.
+- Language: C++17 standard
+- External libraries: SDL2
+- Programming technique: OOAD, Design patterns
 - External libraries installed and managed by
   - [CPM](https://github.com/cpm-cmake/CPM.cmake) Package Manager
 - Unit testing using [Catch2](https://github.com/catchorg/Catch2) v2
