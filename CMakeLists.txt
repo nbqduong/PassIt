@@ -18,36 +18,11 @@ set(CMAKE_CXX_EXTENSIONS OFF)
 set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 #set(SDL2_IMAGE_LIBRARIES "/usr/local/lib/libSDL2_image.so")
 #----------------------------------------------------#
-# package
-#find_package(SDL2 REQUIRED)
+
 
 set(CMAKE_BUILD_WITH_INSTALL_RPATH OFF)
-## Add this to your CMakeLists.txt
-#set(CMAKE_INSTALL_RPATH_USE_LINK_PATH TRUE)
-#set(CMAKE_BUILD_RPATH_USE_ORIGIN TRUE)
-#set(CMAKE_INSTALL_RPATH "")
-
-
 
 option(USE_CPM "Whether to use CPM." ON)
-
-option(ENABLE_WARNINGS "Enable to add warnings to a target." OFF)
-option(ENABLE_WARNINGS_AS_ERRORS "Enable to treat warnings as errors." OFF)
-
-option(ENABLE_TESTING "Enable a Unit Testing build." OFF)
-option(ENABLE_COVERAGE "Enable a Code Coverage build." OFF)
-
-option(ENABLE_CLANG_TIDY "Enable to add clang tidy." OFF)
-
-option(ENABLE_SANITIZE_ADDR "Enable address sanitize." OFF)
-option(ENABLE_SANITIZE_UNDEF "Enable undefined sanitize." OFF)
-option(ENABLE_SANITIZE_LEAK "Enable leak sanitize (Gcc/Clang only)." OFF)
-option(ENABLE_SANITIZE_THREAD "Enable thread sanitize (Gcc/Clang only)." OFF)
-
-option(ENABLE_CLANG_FORMAT "Enable to add clang-format." OFF)
-option(ENABLE_CMAKE_FORMAT "Enable to add cmake-format." OFF)
-
-option(ENABLE_LTO "Enable to add Link Time Optimization." OFF)
 
 
 
@@ -64,23 +39,6 @@ endif()
 
 add_cmake_format_target()
 add_clang_format_target()
-
-if(ENABLE_SANITIZE_ADDR
-        OR ENABLE_SANITIZE_UNDEF
-        OR ENABLE_SANITIZE_LEAK
-        OR ENABLE_SANITIZE_THREAD)
-    include(Sanitizer)
-    add_sanitizer_flags()
-endif()
-
-if(ENABLE_TESTING AND ENABLE_COVERAGE)
-    include(CodeCoverage)
-    append_coverage_compiler_flags()
-endif()
-
-if(ENABLE_LTO)
-    include(LTO)
-endif()
 
 # EXTERNAL LIBRARIES
 
