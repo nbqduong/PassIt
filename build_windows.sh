@@ -1,6 +1,9 @@
 #!/bin/bash
 
 # Create build directory for Windows cross-compilation
+apt update
+apt install mingw-w64
+
 mkdir -p build-windows
 cd build-windows
 
