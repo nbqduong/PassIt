@@ -1,7 +1,9 @@
 #-------------------DEFINE ZONE----------------------#
 set(EXECUTABLE_NAME main)
 set(APP_SOURCES "${CMAKE_CURRENT_SOURCE_DIR}/main.cc")
-set(LIBRARIES CommandAndLogic )
+set(LIBRARIES 
+    CommandAndLogic 
+)
 #----------------------------------------------------#
 # package
 #find_package(SDL2 REQUIRED)
@@ -12,8 +14,27 @@ add_executable(${EXECUTABLE_NAME} ${APP_SOURCES})
 
 target_link_libraries(
     ${EXECUTABLE_NAME}
-    PUBLIC ${LIBRARIES}
+    PRIVATE ${LIBRARIES}
 )
+
+if(WIN32 OR MINGW)
+    target_link_libraries(${EXECUTABLE_NAME} PRIVATE
+        -static
+        -lmingw32
+        -lwinmm
+        -limm32
+        -lole32
+        -loleaut32
+        -lversion
+        -luuid
+        -ladvapi32
+        -lsetupapi
+        -lshell32
+        -ldinput8
+        
+    )
+endif()
+
 
 if(${ENABLE_WARNINGS})
     target_set_warnings(

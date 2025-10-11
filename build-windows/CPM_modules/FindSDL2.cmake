@@ -1,0 +1,3 @@
+include("/home/nuc/code/PassIt/cmake/CPM.cmake")
+CPMAddPackage("NAME;SDL2;GITHUB_REPOSITORY;libsdl-org/SDL;GIT_TAG;release-2.30.6;OPTIONS;SDL_SHARED OFF;SDL_STATIC ON;SDL_MAIN_HANDLED ON")
+set(SDL2_FOUND TRUE)

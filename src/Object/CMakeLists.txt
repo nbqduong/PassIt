@@ -33,12 +33,19 @@ set(LIBRARY_HEADERS
 )
 
 #include more
-set(LIBRARIES_TO_LINK Utilities SDL2_ttf ${SDL2_LIBRARIES} ${SDL2_IMAGE_LIBRARIES})
+set(LIBRARIES_TO_LINK Utilities)
+set(SDL2_DEPS
+    SDL2::SDL2-static
+    SDL2::SDL2main
+    SDL2_image::SDL2_image-static
+    SDL2_ttf::SDL2_ttf-static
+)
 #----------------------------------------------------#
 
 add_library(${LIBRARY_NAME} STATIC ${LIBRARY_SOURCES} ${LIBRARY_HEADERS})
 target_include_directories(${LIBRARY_NAME} PUBLIC ${LIBRARY_INCLUDES})
 target_link_libraries( ${LIBRARY_NAME} PUBLIC ${LIBRARIES_TO_LINK})
+target_link_libraries(${LIBRARY_NAME} PRIVATE ${SDL2_DEPS})
 
 if(${ENABLE_WARNINGS})
     target_set_warnings(

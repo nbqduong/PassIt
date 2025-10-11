@@ -22,7 +22,7 @@ class TextureFactory
 
 public:
 
-    TextureFactory(uint16_t  text_size = 12,std::string font_path = std::string(_materials)+"Myfont.ttf");
+    TextureFactory(uint16_t  text_size = 12,std::string font_path = "Myfont.ttf");
     ~TextureFactory();
 
     //for image

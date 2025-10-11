@@ -1,7 +1,10 @@
 #-------------------DEFINE ZONE----------------------#
 #this library
 set(LIBRARY_NAME "Utilities")
-set(LIBRARY_INCLUDES "./" "${CMAKE_BINARY_DIR}/configured_files/include")
+set(SDL2_INCLUDE_DIRS "${CMAKE_BINARY_DIR}/_deps/sdl2-src/include")
+set(LIBRARY_INCLUDES "./" 
+        "${CMAKE_BINARY_DIR}/configured_files/include" 
+        ${SDL2_INCLUDE_DIRS})
 
 set(LIBRARY_SOURCES
         "${CMAKE_CURRENT_SOURCE_DIR}/Setting.cpp"
@@ -23,12 +26,16 @@ set(LIBRARY_HEADERS
 )
 
 #include more
-set(LIBRARIES_TO_LINK SDL2 ${SDL2_IMAGE_LIBRARIES})
+set(LIBRARIES_TO_LINK     
+SDL2::SDL2-static
+    SDL2::SDL2main
+    SDL2_image::SDL2_image-static
+    SDL2_ttf::SDL2_ttf-static)
 #----------------------------------------------------#
 
 add_library(${LIBRARY_NAME} STATIC ${LIBRARY_SOURCES} ${LIBRARY_HEADERS})
 target_include_directories(${LIBRARY_NAME} PUBLIC ${LIBRARY_INCLUDES})
-target_link_libraries( ${LIBRARY_NAME} PUBLIC ${LIBRARIES_TO_LINK})
+target_link_libraries( ${LIBRARY_NAME} PRIVATE ${LIBRARIES_TO_LINK})
 
 if(${ENABLE_WARNINGS})
     target_set_warnings(
