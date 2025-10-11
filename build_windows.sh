@@ -6,6 +6,7 @@ apt install mingw-w64
 apt install build-essential
 
 # download Cmake
+CMAKE_VERSION=3.22
 wget "https://github.com/Kitware/CMake/releases/download/v${CMAKE_VERSION}/cmake-${CMAKE_VERSION}-linux-x86_64.sh" -O cmake_installer.sh
 chmod +x cmake_installer.sh
 sudo ./cmake_installer.sh --skip-license --prefix=/usr/local
