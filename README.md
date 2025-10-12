@@ -44,9 +44,9 @@ Library code goes into [src/](src/), main program code in [app/](app) and tests 
 ## Building
 
 First, clone this repo and do the preliminary work:
-
+```
 git clone -b windows https://github.com/nbqduong/PassIt.git
-
+```
 - App Executable
 
 ```shell
