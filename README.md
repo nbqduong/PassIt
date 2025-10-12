@@ -45,14 +45,10 @@ Library code goes into [src/](src/), main program code in [app/](app) and tests 
 
 First, clone this repo and do the preliminary work:
 
-
+git clone -b windows https://github.com/nbqduong/PassIt.git
 
 - App Executable
 
 ```shell
-cd build
-cmake -DCMAKE_BUILD_TYPE=Release ..
-cmake --build . --config Release --target main
-cd app
-./main
+./build_windows.sh
 ```
