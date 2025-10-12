@@ -33,7 +33,7 @@ public:
     WindowManager(){};
     WindowManager(std::string_view windows_name, uint16_t size_PX, uint16_t size_PY, uint16_t pos_PX=0, uint16_t pos_PY=0);
     virtual void ExecuteCommand(UserEvent event) = 0;
-    virtual any GetInformation(){};
+    virtual any GetInformation(){ return vector<OptionInfo>{};};
     string GetName(){return string(mWindow->GetName());}
 };
 

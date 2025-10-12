@@ -13,11 +13,11 @@ uint16_t MainWindowSetting::mFrame{64};
 vector<OptionInfo> MainWindowSetting::mOptions{
     {"Hero", {"Basic","Simple"}},
     {"Map",{"Ice","Forest"}},
-    {"WindowSize",{"Medium","Large", "FullScreen"}},
+    {"WindowSize",{"Large","Medium", "FullScreen"}},
 };
 
 vector<string> MainWindowSetting::mPause{
-"R to resume","T to restart", "Space to main setting", "ESC to exit"
+    "Space to main setting", "ESC to exit"
 };
 
 MainWindowSetting::MainWindowSetting()

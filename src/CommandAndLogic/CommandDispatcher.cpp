@@ -19,7 +19,7 @@ void CommandDispatcher::Dispatch(UserEvent event)
             break;
         case UserEvent::emSpace:
             mPopUpWindow = nullptr;
-            mCurrentWindow = make_shared<SettingWindow>();
+
             break;
         case UserEvent::emT:
             mPopUpWindow = nullptr;
@@ -35,17 +35,26 @@ void CommandDispatcher::Dispatch(UserEvent event)
         {
             //Main windows have project_name name
             if(0 == mCurrentWindow->GetName().compare(string(project_name))){
-                mPopUpWindow = make_shared<PauseWindow>();
+                mCurrentWindow = nullptr;
+                mCurrentWindow = make_shared<PauseWindow>();
             }else
             {
                 auto info = mCurrentWindow->GetInformation();
                 try {
-                    mSetting = std::any_cast<vector<OptionInfo>>(info);
+                    vector<OptionInfo> tmpmSetting= std::any_cast<vector<OptionInfo>>(info);
+                    if(!tmpmSetting.empty())
+                    {
+                        mSetting = std::move(tmpmSetting);
+                        CreateMainWindow();
+                    } else{
+                        mCurrentWindow = nullptr;
+                        mCurrentWindow = make_shared<SettingWindow>();
+                    }
                 } catch (const std::bad_any_cast& e) {
                     throw Exception{"Bad any cast for Option" + string(e.what())};
                 }
 
-                CreateMainWindow();
+                
             }
         }
         else
