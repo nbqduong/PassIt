@@ -8,7 +8,7 @@
 #include <iostream>
 
 
-SettingObject::SettingObject(): SettingFactory("Setting")
+SettingObject::SettingObject(): SettingFactory("Press space to start")
 {
     mOptions = MainWindowSetting::GetOptions();
     CreateSettings();
